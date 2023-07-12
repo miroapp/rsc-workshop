@@ -1,7 +1,6 @@
 import {Miro} from '@mirohq/miro-api';
 import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
-
+import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
 
 export const tokensCookie = 'miro_tokens';
 const userIdCookie = 'miro_user_id';

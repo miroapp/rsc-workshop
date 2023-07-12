@@ -1,5 +1,5 @@
 import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
+import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
 import initMiroApiClient from '../../initMiroApiClient'
 
 type GetItemsDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string) => Promise<string[] | Error>
@@ -55,7 +55,7 @@ export const fetchItem: GetItemDataInterface = async (cookies: RequestCookies | 
     return JSON.stringify(item)
 }
 
-export const createItem = async (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string, content: String) => {
+export const createItem = async (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string, content: string) => {
     const {miro} = initMiroApiClient(cookies)
 
     // redirect to auth url if user has not authorized the app

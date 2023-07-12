@@ -4,11 +4,12 @@ import congratulations from '../public/congratulations.png'
 import {fetchBoards} from '../src/utils/fetch/boards'
 import Link from 'next/link'
 import React from 'react'
+import {Board} from "@mirohq/miro-api";
 
 export default async function HomePage() {
 	const nextCookies = cookies()
 
-	let boards = []
+	let boards: Board[] = []
 	try {
 		const response = await fetchBoards(nextCookies);
 		if (Array.isArray(response)) {

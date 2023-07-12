@@ -1,5 +1,5 @@
 import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
+import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
 import {Board} from '@mirohq/miro-api'
 import initMiroApiClient from '../../initMiroApiClient'
 
@@ -49,7 +49,5 @@ export const fetchBoard: GetBoardDataInterface = async (cookies, boardId) => {
             }
         )
     }
-    let board: Board = await miro.as('').getBoard(boardId)
-        .catch(reason => console.log('ERROR', reason))
-    return board
+    return await miro.as('').getBoard(boardId)
 }
