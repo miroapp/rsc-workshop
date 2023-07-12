@@ -2,8 +2,8 @@ Index: pages/api/redirect.ts
 ===================================================================
 diff --git a/pages/api/redirect.ts b/pages/api/redirect.ts
 deleted file mode 100644
---- a/pages/api/redirect.ts	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
-+++ /dev/null	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
+--- a/pages/api/redirect.ts	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ /dev/null	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
 @@ -1,20 +0,0 @@
 -import initMiro from '../../initMiro';
 -import {NextApiRequest, NextApiResponse} from 'next';
@@ -29,8 +29,8 @@ Index: pages/_app.tsx
 ===================================================================
 diff --git a/pages/_app.tsx b/pages/_app.tsx
 deleted file mode 100644
---- a/pages/_app.tsx	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
-+++ /dev/null	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
+--- a/pages/_app.tsx	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ /dev/null	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
 @@ -1,8 +0,0 @@
 -import '../src/assets/style.css';
 -import type {AppProps} from 'next/app';
@@ -44,8 +44,8 @@ Index: pages/_document.tsx
 ===================================================================
 diff --git a/pages/_document.tsx b/pages/_document.tsx
 deleted file mode 100644
---- a/pages/_document.tsx	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
-+++ /dev/null	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
+--- a/pages/_document.tsx	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ /dev/null	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
 @@ -1,21 +0,0 @@
 -import {Html, Head, Main, NextScript} from 'next/document';
 -
@@ -72,8 +72,8 @@ Index: pages/index.tsx
 ===================================================================
 diff --git a/pages/index.tsx b/pages/index.tsx
 deleted file mode 100644
---- a/pages/index.tsx	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
-+++ /dev/null	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
+--- a/pages/index.tsx	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ /dev/null	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
 @@ -1,98 +0,0 @@
 -import {GetServerSideProps} from 'next';
 -import {useEffect} from 'react';
@@ -177,8 +177,8 @@ Index: src/assets/style.css
 ===================================================================
 diff --git a/src/assets/style.css b/src/assets/style.css
 deleted file mode 100644
---- a/src/assets/style.css	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
-+++ /dev/null	(revision 016c69567a76ce99ebd3446bbbf818e7fe8f001e)
+--- a/src/assets/style.css	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ /dev/null	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
 @@ -1,21 +0,0 @@
 -@import 'mirotone/dist/styles.css';
 -
@@ -201,188 +201,120 @@ deleted file mode 100644
 -  max-width: 100%;
 -  height: auto;
 -}
-Index: app/auth/redirect/page.tsx
+Index: tsconfig.json
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/app/auth/redirect/page.tsx b/app/auth/redirect/page.tsx
+diff --git a/tsconfig.json b/tsconfig.json
+--- a/tsconfig.json	(revision d93a1baab16ea2712d9d351f132a3c46b85ae8c7)
++++ b/tsconfig.json	(date 1689190006003)
+@@ -24,12 +24,18 @@
+     ],
+     "allowJs": true,
+     "incremental": true,
+-    "isolatedModules": true
++    "isolatedModules": true,
++    "plugins": [
++      {
++        "name": "next"
++      }
++    ]
+   },
+   "include": [
+     "src",
+     "pages",
+-    "*.ts"
++    "*.ts",
++    ".next/types/**/*.ts"
+   ],
+   "exclude": [
+     "node_modules"
+Index: styles/globals.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/styles/globals.css b/styles/globals.css
 new file mode 100644
---- /dev/null	(date 1688647357495)
-+++ b/app/auth/redirect/page.tsx	(date 1688647357495)
-@@ -0,0 +1,40 @@
-+'use server'
+--- /dev/null	(date 1689189680625)
++++ b/styles/globals.css	(date 1689189680625)
+@@ -0,0 +1,16 @@
++.wrapper {
++  max-width: 500px;
++  margin: 0 auto;
++  padding: 20px;
++}
 +
-+import {redirect} from 'next/navigation'
-+import Link from 'next/link'
-+import {cookies} from 'next/headers'
++img {
++  max-width: 60%;
++  margin: 0 auto;
++  height: auto;
++}
 +
-+import initMiroApiClient from '../../../src/initMiroApiClient';
-+import CookieMachine from '../../../src/CookieMachine/CookieMachine'
++a.button {
++  text-decoration: none;
++  line-height: 48px;
++}
+Index: src/utils/fetch/boards.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/utils/fetch/boards.ts b/src/utils/fetch/boards.ts
+new file mode 100644
+--- /dev/null	(date 1689189924193)
++++ b/src/utils/fetch/boards.ts	(date 1689189924193)
+@@ -0,0 +1,48 @@
++import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
++import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
++import {Board} from '@mirohq/miro-api'
++import initMiroApiClient from '../../initMiroApiClient'
 +
++type GetDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies) => Promise<Board[] | Error>
++type GetBoardDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string) => Promise<Board | Error>
 +
-+// handle redirect with code and exchange it for the access token
-+export default async function AuthorizationPage ({
-+    searchParams,
-+}: {
-+    searchParams?: { [key: string]: string | undefined };
-+}) {
-+  const nextCookies = cookies()
-+  const {miro} = initMiroApiClient(nextCookies);
++export const fetchBoards: GetDataInterface = async (cookies) => {
++    const {miro} = initMiroApiClient(cookies)
 +
-+  // Make sure the code is in query parameters
-+  const code = searchParams?.code
-+  if (!code) {
-+    redirect('./')
-+  }
++    // redirect to auth url if user has not authorized the app
++    if (!(await miro.isAuthorized(''))) {
++        throw new Error('Authentication error', {
++                cause: {
++                    redirect: {
++                        destination: miro.getAuthUrl()
++                }
++            }}
++        )
++    }
++    const api = miro.as('')
 +
-+  let token
-+  try {
-+    token = await miro.exchangeCodeForAccessToken('', code);
-+  } catch (e) {
-+    console.error('error fetching access token from Miro', e)
-+  }
++    const boards: Board[] = []
 +
-+  return (
-+      <div>
-+        <p>Successfully authorized.</p>
-+        <CookieMachine token={token}/>
-+        <Link href={'/'}>Back home</Link>
-+      </div>
-+  )
++    for await (const board of api.getAllBoards()) {
++        boards.push(board)
++    }
++
++    return boards
++}
++
++export const fetchBoard: GetBoardDataInterface = async (cookies, boardId) => {
++    const {miro} = initMiroApiClient(cookies)
++
++    // redirect to auth url if user has not authorized the app
++    if (!(await miro.isAuthorized(''))) {
++        throw new Error('Authentication error', {
++                cause: {
++                    redirect: {
++                        destination: miro.getAuthUrl()
++                    }
++                }
++            }
++        )
++    }
++    return await miro.as('').getBoard(boardId)
 +}
 \ No newline at end of file
-Index: app/head.tsx
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/app/head.tsx b/app/head.tsx
-new file mode 100644
---- /dev/null	(date 1688647357499)
-+++ b/app/head.tsx	(date 1688647357499)
-@@ -0,0 +1,18 @@
-+import React from 'react'
-+import Script from 'next/script'
-+
-+export default function Head() {
-+  return (
-+    <>
-+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-+        <link rel="icon" href="/favicon.ico"/>
-+        <link
-+            precedence="default"
-+            rel="stylesheet"
-+            href="https://unpkg.com/mirotone@^4/dist/styles.css"
-+        />
-+        <title>NextJS 13 appDir - Miro</title>
-+        <Script src="https://miro.com/app/static/sdk/v2/miro.js" />
-+    </>
-+  )
-+}
-Index: app/layout.tsx
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/app/layout.tsx b/app/layout.tsx
-new file mode 100644
---- /dev/null	(date 1688647357504)
-+++ b/app/layout.tsx	(date 1688647357504)
-@@ -0,0 +1,37 @@
-+import {cookies} from 'next/headers'
-+import React from 'react'
-+import {Authentication} from '../src/Authentication/Authentication'
-+import LoadMiroWebSDK from './LoadMiroWebSDK'
-+import initMiroApiClient from '../src/initMiroApiClient'
-+
-+type RootLayoutProps = {
-+	children: React.ReactNode
-+}
-+export default async function RootLayout({
-+	 children
-+ }: RootLayoutProps) {
-+	const nextCookies = cookies()
-+	const {miro} = initMiroApiClient(nextCookies)
-+
-+	let destination = ''
-+	// redirect to auth url if user has not authorized the app
-+	if (!(await miro.isAuthorized(''))) {
-+		destination = miro.getAuthUrl()
-+	}
-+
-+	return (
-+		<html>
-+		<head>
-+		</head>
-+		<body>
-+		<div style={{maxWidth: '500px', margin: 'var(--space-large) auto', display: 'block'}}>
-+			<h1>Miro board info viewer</h1>
-+			<LoadMiroWebSDK/>
-+			<Authentication destination={destination}/>
-+			<hr/>
-+			{children}
-+		</div>
-+		</body>
-+		</html>
-+	)
-+}
-Index: app/LoadMiroWebSDK.tsx
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/app/LoadMiroWebSDK.tsx b/app/LoadMiroWebSDK.tsx
-new file mode 100644
---- /dev/null	(date 1688647357507)
-+++ b/app/LoadMiroWebSDK.tsx	(date 1688647357507)
-@@ -0,0 +1,14 @@
-+'use client'
-+
-+import {useEffect} from 'react'
-+
-+export default function() {
-+	useEffect(() => {
-+		window?.miro?.board.ui.on('icon:click', async () => {
-+			window.miro.board.ui.openPanel({
-+				url: `/`,
-+			});
-+		});
-+	}, []);
-+	return null
-+}
-\ No newline at end of file
-Index: app/error.tsx
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/app/error.tsx b/app/error.tsx
-new file mode 100644
---- /dev/null	(date 1688648963839)
-+++ b/app/error.tsx	(date 1688648963839)
-@@ -0,0 +1,21 @@
-+'use client';
-+
-+
-+import { useEffect } from 'react';
-+
-+export default function Error({ error, reset }: {
-+	error: Error;
-+	reset: () => void;
-+}) {
-+	useEffect(() => {
-+		// Log the error to an error reporting service
-+		console.error(error);
-+	}, [error]);
-+
-+	return (
-+		<div>
-+			<p>Something went wrong!</p>
-+			<button onClick={() => reset()}>Reset error boundary</button>
-+		</div>
-+	);
-+}
 Index: src/initMiroApiClient.ts
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
@@ -390,13 +322,12 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/initMiroApiClient.ts b/src/initMiroApiClient.ts
 new file mode 100644
---- /dev/null	(date 1688647357550)
-+++ b/src/initMiroApiClient.ts	(date 1688647357550)
-@@ -0,0 +1,35 @@
+--- /dev/null	(date 1689189945041)
++++ b/src/initMiroApiClient.ts	(date 1689189945041)
+@@ -0,0 +1,34 @@
 +import {Miro} from '@mirohq/miro-api';
 +import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-+import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
-+
++import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
 +
 +export const tokensCookie = 'miro_tokens';
 +const userIdCookie = 'miro_user_id';
@@ -428,97 +359,6 @@ new file mode 100644
 +}
 +
 +export default initMiroApiClient
-Index: styles/globals.css
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/styles/globals.css b/styles/globals.css
-new file mode 100644
---- /dev/null	(date 1688647357560)
-+++ b/styles/globals.css	(date 1688647357560)
-@@ -0,0 +1,16 @@
-+.wrapper {
-+  max-width: 500px;
-+  margin: 0 auto;
-+  padding: 20px;
-+}
-+
-+img {
-+  max-width: 60%;
-+  margin: 0 auto;
-+  height: auto;
-+}
-+
-+a.button {
-+  text-decoration: none;
-+  line-height: 48px;
-+}
-Index: src/utils/fetch/boards.ts
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/src/utils/fetch/boards.ts b/src/utils/fetch/boards.ts
-new file mode 100644
---- /dev/null	(date 1688647357544)
-+++ b/src/utils/fetch/boards.ts	(date 1688647357544)
-@@ -0,0 +1,55 @@
-+import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-+import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
-+import {Board} from '@mirohq/miro-api'
-+import initMiroApiClient from '../../initMiroApiClient'
-+
-+type GetDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies) => Promise<Board[] | Error>
-+type GetBoardDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string) => Promise<Board | Error>
-+
-+export const fetchBoards: GetDataInterface = async (cookies) => {
-+    const {miro} = initMiroApiClient(cookies)
-+
-+    // redirect to auth url if user has not authorized the app
-+    if (!(await miro.isAuthorized(''))) {
-+        throw new Error('Authentication error', {
-+                cause: {
-+                    redirect: {
-+                        destination: miro.getAuthUrl()
-+                    }
-+                }
-+            }
-+        )
-+    }
-+    const api = miro.as('')
-+
-+    const boards: Board[] = []
-+
-+    try {
-+        for await (const board of api.getAllBoards()) {
-+            boards.push(board)
-+        }
-+    } catch (e) {
-+        console.log('ERROR', e)
-+    }
-+
-+    return boards
-+}
-+
-+export const fetchBoard: GetBoardDataInterface = async (cookies, boardId) => {
-+    const {miro} = initMiroApiClient(cookies)
-+
-+    // redirect to auth url if user has not authorized the app
-+    if (!(await miro.isAuthorized(''))) {
-+        throw new Error('Authentication error', {
-+                cause: {
-+                    redirect: {
-+                        destination: miro.getAuthUrl()
-+                    }
-+                }
-+            }
-+        )
-+    }
-+    let board: Board = await miro.as('').getBoard(boardId)
-+        .catch(reason => console.log('ERROR', reason))
-+    return board
-+}
 \ No newline at end of file
 Index: src/utils/fetch/items.ts
 IDEA additional info:
@@ -527,11 +367,11 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/utils/fetch/items.ts b/src/utils/fetch/items.ts
 new file mode 100644
---- /dev/null	(date 1688647357547)
-+++ b/src/utils/fetch/items.ts	(date 1688647357547)
+--- /dev/null	(date 1689189924193)
++++ b/src/utils/fetch/items.ts	(date 1689189924193)
 @@ -0,0 +1,103 @@
 +import {RequestCookies} from 'next/dist/server/web/spec-extension/cookies'
-+import {ReadonlyRequestCookies} from 'next/dist/server/app-render'
++import {ReadonlyRequestCookies} from 'next/dist/server/web/spec-extension/adapters/request-cookies'
 +import initMiroApiClient from '../../initMiroApiClient'
 +
 +type GetItemsDataInterface = (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string) => Promise<string[] | Error>
@@ -587,7 +427,7 @@ new file mode 100644
 +    return JSON.stringify(item)
 +}
 +
-+export const createItem = async (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string, content: String) => {
++export const createItem = async (cookies: RequestCookies | ReadonlyRequestCookies, boardId: string, content: string) => {
 +    const {miro} = initMiroApiClient(cookies)
 +
 +    // redirect to auth url if user has not authorized the app
@@ -641,8 +481,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/Authentication/Authentication.tsx b/src/Authentication/Authentication.tsx
 new file mode 100644
---- /dev/null	(date 1688647357536)
-+++ b/src/Authentication/Authentication.tsx	(date 1688647357536)
+--- /dev/null	(date 1689189680625)
++++ b/src/Authentication/Authentication.tsx	(date 1689189680625)
 @@ -0,0 +1,7 @@
 +'use client'
 +
@@ -659,8 +499,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/src/CookieMachine/CookieMachine.tsx b/src/CookieMachine/CookieMachine.tsx
 new file mode 100644
---- /dev/null	(date 1688647357540)
-+++ b/src/CookieMachine/CookieMachine.tsx	(date 1688647357540)
+--- /dev/null	(date 1689189680626)
++++ b/src/CookieMachine/CookieMachine.tsx	(date 1689189680626)
 @@ -0,0 +1,13 @@
 +'use client'
 +
@@ -683,26 +523,28 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/app/page.tsx b/app/page.tsx
 new file mode 100644
---- /dev/null	(date 1688647357514)
-+++ b/app/page.tsx	(date 1688647357514)
-@@ -0,0 +1,51 @@
+--- /dev/null	(date 1689190044893)
++++ b/app/page.tsx	(date 1689190044893)
+@@ -0,0 +1,53 @@
 +import {cookies} from 'next/headers'
 +import Image from 'next/image'
 +import congratulations from '../public/congratulations.png'
 +import {fetchBoards} from '../src/utils/fetch/boards'
 +import Link from 'next/link'
 +import React from 'react'
++import { Board } from '@mirohq/miro-api'
 +
 +export default async function HomePage() {
 +	const nextCookies = cookies()
 +
-+	let boards = []
++	let boards: Board[] = []
 +	try {
 +		const response = await fetchBoards(nextCookies);
 +		if (Array.isArray(response)) {
 +			boards = response
 +		}
 +	} catch (e) {
++        console.log('Error while getting all boards', e)
 +	}
 +
 +	return (
@@ -736,6 +578,187 @@ new file mode 100644
 +			</div>
 +		</div>
 +	)
++}
+\ No newline at end of file
+Index: app/head.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/head.tsx b/app/head.tsx
+new file mode 100644
+--- /dev/null	(date 1689189680624)
++++ b/app/head.tsx	(date 1689189680624)
+@@ -0,0 +1,18 @@
++import React from 'react'
++import Script from 'next/script'
++
++export default function Head() {
++  return (
++    <>
++        <meta content="width=device-width, initial-scale=1" name="viewport"/>
++        <link rel="icon" href="/favicon.ico"/>
++        <link
++            precedence="default"
++            rel="stylesheet"
++            href="https://unpkg.com/mirotone@^4/dist/styles.css"
++        />
++        <title>NextJS 13 appDir - Miro</title>
++        <Script src="https://miro.com/app/static/sdk/v2/miro.js" />
++    </>
++  )
++}
+Index: app/error.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/error.tsx b/app/error.tsx
+new file mode 100644
+--- /dev/null	(date 1689189680625)
++++ b/app/error.tsx	(date 1689189680625)
+@@ -0,0 +1,21 @@
++'use client';
++
++
++import { useEffect } from 'react';
++
++export default function Error({ error, reset }: {
++	error: Error;
++	reset: () => void;
++}) {
++	useEffect(() => {
++		// Log the error to an error reporting service
++		console.error(error);
++	}, [error]);
++
++	return (
++		<div>
++			<p>Something went wrong!</p>
++			<button onClick={() => reset()}>Reset error boundary</button>
++		</div>
++	);
++}
+Index: app/LoadMiroWebSDK.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/LoadMiroWebSDK.tsx b/app/LoadMiroWebSDK.tsx
+new file mode 100644
+--- /dev/null	(date 1689189680624)
++++ b/app/LoadMiroWebSDK.tsx	(date 1689189680624)
+@@ -0,0 +1,14 @@
++'use client'
++
++import {useEffect} from 'react'
++
++export default function() {
++	useEffect(() => {
++		window?.miro?.board.ui.on('icon:click', async () => {
++			window.miro.board.ui.openPanel({
++				url: `/`,
++			});
++		});
++	}, []);
++	return null
++}
+\ No newline at end of file
+Index: app/layout.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/layout.tsx b/app/layout.tsx
+new file mode 100644
+--- /dev/null	(date 1689189680624)
++++ b/app/layout.tsx	(date 1689189680624)
+@@ -0,0 +1,37 @@
++import {cookies} from 'next/headers'
++import React from 'react'
++import {Authentication} from '../src/Authentication/Authentication'
++import LoadMiroWebSDK from './LoadMiroWebSDK'
++import initMiroApiClient from '../src/initMiroApiClient'
++
++type RootLayoutProps = {
++	children: React.ReactNode
++}
++export default async function RootLayout({
++	 children
++ }: RootLayoutProps) {
++	const nextCookies = cookies()
++	const {miro} = initMiroApiClient(nextCookies)
++
++	let destination = ''
++	// redirect to auth url if user has not authorized the app
++	if (!(await miro.isAuthorized(''))) {
++		destination = miro.getAuthUrl()
++	}
++
++	return (
++		<html>
++		<head>
++		</head>
++		<body>
++		<div style={{maxWidth: '500px', margin: 'var(--space-large) auto', display: 'block'}}>
++			<h1>Miro board info viewer</h1>
++			<LoadMiroWebSDK/>
++			<Authentication destination={destination}/>
++			<hr/>
++			{children}
++		</div>
++		</body>
++		</html>
++	)
++}
+Index: app/auth/redirect/page.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/auth/redirect/page.tsx b/app/auth/redirect/page.tsx
+new file mode 100644
+--- /dev/null	(date 1689189924193)
++++ b/app/auth/redirect/page.tsx	(date 1689189924193)
+@@ -0,0 +1,39 @@
++'use server'
++
++import {redirect} from 'next/navigation'
++import Link from 'next/link'
++import {cookies} from 'next/headers'
++
++import initMiroApiClient from '../../../src/initMiroApiClient';
++import CookieMachine from '../../../src/CookieMachine/CookieMachine'
++
++// handle redirect with code and exchange it for the access token
++export default async function AuthorizationPage ({
++    searchParams,
++}: {
++    searchParams?: { [key: string]: string | undefined };
++}) {
++  const nextCookies = cookies()
++  const {miro} = initMiroApiClient(nextCookies);
++
++  // Make sure the code is in query parameters
++  const code = searchParams?.code
++  if (!code) {
++    redirect('./')
++  }
++
++  let token
++  try {
++    token = await miro.exchangeCodeForAccessToken('', code);
++  } catch (e) {
++    console.error('error fetching access token from Miro', e)
++  }
++
++  return (
++      <div>
++        <p>Successfully authorized.</p>
++        <CookieMachine token={token}/>
++        <Link href={'/'}>Back home</Link>
++      </div>
++  )
 +}
 \ No newline at end of file
 diff --git a/src/assets/welcome.png b/src/assets/welcome.png
