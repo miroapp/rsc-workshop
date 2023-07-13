@@ -711,15 +711,15 @@ new file mode 100644
 +		</html>
 +	)
 +}
-Index: app/auth/redirect/page.tsx
+Index: app/api/redirect/page.tsx
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/app/auth/redirect/page.tsx b/app/auth/redirect/page.tsx
+diff --git a/app/api/redirect/page.tsx b/app/api/redirect/page.tsx
 new file mode 100644
 --- /dev/null	(date 1689189924193)
-+++ b/app/auth/redirect/page.tsx	(date 1689189924193)
++++ b/app/api/redirect/page.tsx	(date 1689189924193)
 @@ -0,0 +1,39 @@
 +'use server'
 +
