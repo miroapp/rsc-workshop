@@ -10,4 +10,4 @@ Milestone 3: server actions are added, [branch](https://github.com/miroapp/weare
 
 ## Links
 
-➡️ [Miro board](https://miro.com/app/board/uXjVMBc1ZoA=/?share_link_id=978083292237)https://miro.com/app/board/uXjVMBc1ZoA=/?share_link_id=978083292237 
+➡️ [Miro board](https://miro.com/app/board/uXjVMBc1ZoA=/?share_link_id=978083292237)
