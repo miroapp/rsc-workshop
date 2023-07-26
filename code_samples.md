@@ -41,6 +41,10 @@ const response = await fetchItems(nextCookies, boardId)
 <li key={item.id}>
 ```
 
+```typescript
+<p>{item.id}</p>
+```
+
 
 ```typescript
 <p>Type: {item.type}</p>
@@ -51,10 +55,6 @@ const response = await fetchItems(nextCookies, boardId)
  <p>{item.data.content || item.data.title}</p>
 ```
 
-
-```typescript
-<p>{item.id}</p>
-```
 
 ----
 
