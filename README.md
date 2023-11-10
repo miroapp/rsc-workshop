@@ -5,18 +5,14 @@
 However, you can also checkout any of the branches on our GitHub repository to catch up at a particular point in the workshop:
 
 **Milestone 1**
-Working boilerplate application \
-https://github.com/miroapp/wearedevelopers-workshop/tree/after-patch 
-
-**Milestone 2**
 React server component and MomentJS \
 https://github.com/miroapp/wearedevelopers-workshop/tree/moment-time 
 
-**Milestone 3**
+**Milestone 2**
 Pages and Routing \
 https://github.com/miroapp/wearedevelopers-workshop/tree/pages-and-routing 
 
-**Milestone 4**
+**Milestone 3**
 Server Actions \
 https://github.com/miroapp/wearedevelopers-workshop/tree/server-actions 
  
