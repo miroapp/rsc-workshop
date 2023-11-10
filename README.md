@@ -1,4 +1,4 @@
-# wearedevelopers-workshop
+# Workshop
 
 **TIP**: If you get lost in the middle of the workshop, don’t worry — we will take pauses and make sure everyone is on track. 
 
