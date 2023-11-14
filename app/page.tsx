@@ -5,6 +5,7 @@ import { fetchBoards } from "../src/utils/fetch/boards";
 import Link from "next/link";
 import React from "react";
 import { Board } from "@mirohq/miro-api";
+import moment from 'moment';
 
 export default async function HomePage() {
   const nextCookies = cookies();
@@ -19,6 +20,9 @@ export default async function HomePage() {
 
   return (
     <div className="grid wrapper">
+      <time>
+        {moment().format('MMMM Do YYYY, h:mm:ss a')}
+      </time>
       <div className="cs1 ce12">
         <Image
           src={congratulations}
