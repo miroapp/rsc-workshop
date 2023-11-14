@@ -1,8 +1,10 @@
 import {cookies} from 'next/headers'
-import {fetchItems} from '../../../src/utils/fetch/items'
+import {createItem, fetchItems} from '../../../src/utils/fetch/items'
 import React from 'react'
 import {WidgetItem} from "@mirohq/miro-api/dist/highlevel/Item";
-import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
+import CreateItem from '../../../src/components/CreateItem';
+import ItemView from '../../../src/components/ItemView';
 
 export default async function BoardPage( {params}: { params: { boardId: string } } ) {
 
@@ -19,25 +21,26 @@ export default async function BoardPage( {params}: { params: { boardId: string }
         console.log('Error while retrieving items', e)
     }
 
+  async function createItemOnBoard(data: FormData) {
+    'use server'
+    console.log('From form: ', data)
+    let content: string = data.get('content') as string;
+    await createItem(cookies(), boardId, content)
+    revalidatePath(`/boards/${boardId}`)
+  }
+
     return (
         <div className="grid wrapper">
             <ul>
                 {
                     !!items.length && items.map(item =>
-                        <li key={item.id}>
-                            <Link href={`../boards/${boardId}/items/${item.id}`}>{item.id}</Link>
-                            <p>Type: {item.type}</p>
-                            <p>
-                                {
-                                    // @ts-ignore Different types of items will have diffrerent properties,
-                                    // this is just a quick example
-                                    item.data.content || item.data.title
-                                }
-                            </p>
-                        </li>
+                      <li key={item.id}>
+                        <ItemView boardId={boardId} itemJson={JSON.stringify(item)}/>
+                      </li>
                     )
                 }
             </ul>
+          <CreateItem createItem={createItemOnBoard}/>
         </div>
     )
 }
